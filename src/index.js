@@ -5,7 +5,7 @@ import "./index.css";
 class Square extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: props.value };
+    this.state = { value: null };
   }
   render() {
     return (
@@ -17,8 +17,12 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { squares: Array(9).fill(null) };
+  }
   renderSquare(i) {
-    return <Square value={i} />;
+    return <Square value={this.state.squares[i]} />;
   }
 
   render() {
@@ -64,5 +68,6 @@ class Game extends React.Component {
 }
 
 // ========================================
-
+let filledArray = new Array(10).fill(null);
+console.log(filledArray)
 ReactDOM.render(<Game />, document.getElementById("root"));
